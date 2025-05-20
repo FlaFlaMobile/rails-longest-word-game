@@ -1,0 +1,22 @@
+<h1>New game 🎲</h1>
+  <% @letters.each do |letter| %>
+    <div class="letter-square">
+      <%= letter %>
+    </div>
+  <% end %>
+
+<h2><% @letters%></h2>
+
+<form action="/score" method="post" data-turbo="false" class="form-container">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters.join(',') %> <!-- Champ caché pour stocker les lettres -->
+    <div class="form-group">
+        <label for="word">What is the longest English word you can find?</label>
+        <div class="input-group">
+            <input type="text" name="word" id="word">
+            <input type="submit" value="Play!" class="submit-button">
+        </div>
+    </div>
+</form>
+
+
